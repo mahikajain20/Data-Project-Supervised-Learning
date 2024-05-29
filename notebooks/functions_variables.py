@@ -10,7 +10,45 @@ def encode_tags(df):
     Returns:
         pandas.DataFrame: modified with encoded tags
     """
-    tags = df["tags"].tolist()
-    # create a unique list of tags and then create a new column for each tag
-        
+   # Extract all unique tags
+    all_tags = df['tags'].tolist()
+    unique_tags = list(set([tag for sublist in all_tags for tag in sublist]))
+
+    # Create a column for each unique tag and initialize with 0
+    for tag in unique_tags:
+        df[tag] = 0
+
+    # Set the appropriate columns to 1 where the tag is present
+    for index, row in df.iterrows():
+        for tag in row['tags']:
+            df.at[index, tag] = 1
+
     return df
+
+def extract_info(result):
+    """Extract relevant information from the JSON response
+    Args:
+        result (dict): JSON response from data
+    Returns:
+        dict: relevant information from the JSON response
+    """
+
+    info = {
+        'permalink': result.get('permalink'),
+        'status': result.get('status'),
+        'list_date': result.get('list_date'),
+        'sold_date': result['description'].get('sold_date'),
+        'list_price': result.get('list_price'),
+        'sold_price': result['description'].get('sold_price'),
+        'year_built': result['description'].get('year_built'),
+        'beds': result['description'].get('beds'),
+        'baths': result['description'].get('baths'),
+        'sqft': result['description'].get('sqft'),
+        'lot_sqft': result['description'].get('lot_sqft'),
+        'garage': result['description'].get('garage'),
+        'tags': result.get('tags'),
+        'office_name': result['source']['agents'][0].get('office_name'),
+        'source_type': result['source']['type']
+    }
+
+    return info
