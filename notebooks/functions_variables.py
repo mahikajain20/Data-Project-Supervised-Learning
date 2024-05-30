@@ -25,6 +25,23 @@ def encode_tags(df):
 
     return df
 
+def train_models(name, model, X_train, Y_train, X_val, Y_val):
+    model.fit(X_train, Y_train)
+    Y_pred = model.predict(X_val)
+    
+    r2 = r2_score(Y_val, Y_pred)
+    mse = mean_squared_error(Y_val, Y_pred)
+    rmse = np.sqrt(mse)
+    mae = mean_absolute_error(Y_val, Y_pred)
+
+    print(f'{name} R2: {r2}')
+    print(f'{name} MSE: {mse}')
+    print(f'{name} RMSE: {rmse}')
+    print(f'{name} MAE: {mae}')
+    print('\n')
+    
+    return {'Model': name, 'R2': r2, 'MSE': mse, 'RMSE': rmse, 'MAE': mae}
+
 def extract_info(result):
     """Extract relevant information from the JSON response
     Args:
@@ -52,3 +69,5 @@ def extract_info(result):
     }
 
     return info
+
+
