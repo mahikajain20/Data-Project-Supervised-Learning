@@ -19,7 +19,7 @@ Complete the **1 - EDA.ipynb** notebook to demonstrate how you executed the task
 
 Complete the **2 - model_selection.ipynb** notebook to demonstrate how you executed the tasks above.
 
-## Part 3: Tuning and Pipelining 
+## Part 3: Tuning and Pipelining (mostly stretch)
 
 1. Perform hyperparameter tuning on the best performing models from Part 2. But be careful! Depending on how you preprocessed your data, you may not be able to use the default Scikit-Learn functions without leaking information. You'll find some helpful starter docstrings in the `3 - tuning_pipeline.ipynb` notebook.
 2. Save your tuned model - you may want to create a new `models/` directory in your repo
