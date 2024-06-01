@@ -11,11 +11,9 @@ The aim of this project was to predict house prices using various attributes suc
 ### Source of Data
 The dataset includes various features relevant to predicting house prices.
 
-1. Loaded the raw data from JSON files.
-2. Merged multiple data sources into a single dataframe.
-3. Handled missing values through appropriate methods.
-4. Split the data into training and test sets.
-5. Converted categorical variables into numerical format using encoding techniques.
+1. Loaded the raw data from JSON files and merged data into a single dataframe.
+2. Handled missing values through appropriate methods.
+3. Split the data into training and test sets.
 
 ## Exploratory Data Analysis (EDA)
 
